@@ -60,6 +60,21 @@ const Header = () => {
   );
 };
 
+const Footer = () => {
+  return (
+    <HStack
+      as="footer"
+      justifyContent="space-between"
+      alignItems="center"
+      py={3}
+    >
+      <a href="https://github.com/bechols/bechols-nextjs">
+        © Ben Echols 2021. {process.env.gitShaShort}
+      </a>
+    </HStack>
+  );
+};
+
 export default function Layout({ children }) {
   return (
     <Container
@@ -74,12 +89,8 @@ export default function Layout({ children }) {
         <VStack spacing={16} flex={1} w="full" as="main">
           {children}
         </VStack>
-        <Container as="footer" centerContent>
-          <a href="https://github.com/bechols/">
-            © Ben Echols 2021. {process.env.gitShaShort}
-          </a>
-        </Container>
       </VStack>
+      <Footer />
     </Container>
   );
 }

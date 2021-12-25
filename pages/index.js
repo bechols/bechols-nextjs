@@ -3,16 +3,21 @@ import NextLink from "next/link";
 import Link from "next/link";
 import Image from "next/image";
 import pic from "../public/ben_and_liz_point_lobos.jpeg";
-import { Box, VStack, Stack, Heading } from "@chakra-ui/react";
+import { Box, VStack, HStack, Stack, Heading } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
+import { SiApachekafka } from 'react-icons/si';
+import { GiBookshelf, GiRocketFlight } from 'react-icons/gi';
 
-function CTACard({ heading, pagename, link }) {
+function CTACard({ heading, link, icon }) {
   return (
     <NextLink href={link} passHref>
       <Link variant="ghost">
         <Box p={5} shadow="md" borderWidth="1px" w="100%">
+          <HStack>
           <Heading fontSize="lg">{heading}</Heading>
-          <Heading fontSize="sm">{pagename}{'  '}<ArrowRightIcon /></Heading>
+          {icon}
+          </HStack>
+          
         </Box>
       </Link>
     </NextLink>
@@ -39,14 +44,18 @@ export default function Home() {
           </Heading>
           <CTACard
             heading="I'm a product manager at Confluent."
-            pagename="About Me"
             link="/about"
+            icon={<SiApachekafka />}
           />
-          <CTACard heading="I read a lot." pagename="Books" link="/books" />
+          <CTACard 
+            heading="I read a lot." 
+            link="/books" 
+            icon={<GiBookshelf />} 
+          />
           <CTACard
             heading="The world is fascinating."
-            pagename="Interesting"
             link="/interesting"
+            icon={<GiRocketFlight />}
           />
         </VStack>
         <Box rounded="20px" overflow="hidden" maxW="md">
