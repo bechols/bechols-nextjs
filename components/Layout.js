@@ -6,7 +6,7 @@ import {
   Button,
   Link,
   VStack,
-  Container,
+  Container
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
@@ -86,9 +86,7 @@ export default function Layout({ children }) {
     >
       <VStack flex={1} spacing={16} alignItems="stretch" w="full">
         <Header />
-        <VStack spacing={16} flex={1} w="full" as="main">
-          {children}
-        </VStack>
+        {children}
       </VStack>
       <Footer />
     </Container>
