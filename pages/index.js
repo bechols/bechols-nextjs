@@ -4,9 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import pic from "../public/ben_and_liz_point_lobos.jpeg";
 import { Box, VStack, HStack, Stack, Heading } from "@chakra-ui/react";
-import { ArrowRightIcon } from "@chakra-ui/icons";
 import { SiApachekafka } from 'react-icons/si';
-import { GiBookshelf, GiRocketFlight } from 'react-icons/gi';
+import { GiBookshelf, GiEarthAmerica } from 'react-icons/gi';
 
 function CTACard({ heading, link, icon }) {
   return (
@@ -55,7 +54,7 @@ export default function Home() {
           <CTACard
             heading="The world is fascinating."
             link="/interesting"
-            icon={<GiRocketFlight />}
+            icon={<GiEarthAmerica />}
           />
         </VStack>
         <Box rounded="20px" overflow="hidden" maxW="md">

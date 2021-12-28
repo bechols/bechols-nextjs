@@ -1,5 +1,13 @@
 import NextLink from "next/link";
-import { Button, Container, Heading, Link, Text } from "@chakra-ui/react";
+import {
+  HStack,
+  Button,
+  Container,
+  Heading,
+  Link,
+  Text,
+} from "@chakra-ui/react";
+import { GrGithub, GrMail, GrLinkedin, GrTwitter } from "react-icons/gr";
 
 function ResumeEntry({ position, company, link }) {
   return (
@@ -18,6 +26,21 @@ export default function About() {
     <Text>
       <Container>
         <Heading size="lg">About Me</Heading>
+        <br />
+        <HStack>
+          <Link href="mailto:benjamin.echols@gmail.com" isExternal>
+            <GrMail fontSize="32px" />
+          </Link>
+          <Link href="https://linkedin.com/in/benechols" isExternal>
+            <GrLinkedin fontSize="32px" />
+          </Link>
+          <Link href="https://github.com/bechols" isExternal>
+            <GrGithub fontSize="32px" />
+          </Link>
+          <Link href="https://twitter.com/bechols" isExternal>
+            <GrTwitter fontSize="32px" />
+          </Link>
+        </HStack>
         <br />
         <NextLink href="/about/manual" passHref>
           <Link>
