@@ -25,6 +25,7 @@ export default function Books({ currentlyReading, recentlyRead }) {
                 title={book.title}
                 author={book.author}
                 link={book.link}
+                key={index}
               />
             );
           }
@@ -39,6 +40,7 @@ export default function Books({ currentlyReading, recentlyRead }) {
                 title={book.title}
                 author={book.author}
                 link={book.link}
+                key={index}
               />
             );
           }

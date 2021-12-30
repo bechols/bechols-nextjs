@@ -27,6 +27,7 @@ export default function About() {
       <Container>
         <Heading size="lg">About Me</Heading>
         <br />
+        <Heading size="md">Get in touch</Heading>
         <HStack>
           <Link href="mailto:benjamin.echols@gmail.com" isExternal>
             <GrMail fontSize="32px" />
@@ -42,20 +43,8 @@ export default function About() {
           </Link>
         </HStack>
         <br />
-        <NextLink href="/about/manual" passHref>
-          <Link>
-            <Heading size="sm">User manual for working with me</Heading>
-          </Link>
-        </NextLink>
-        <br />
-        <NextLink href="/about/how_i_got_into_pm" passHref>
-          <Link>
-            <Heading size="sm">How I got into product management</Heading>
-          </Link>
-        </NextLink>
-        <br />
 
-        <Heading size="md">Current Work</Heading>
+        <Heading size="md">Current work</Heading>
         <ResumeEntry
           position="Group Product Manager, Confluent Cloud"
           company="Confluent"
@@ -63,7 +52,7 @@ export default function About() {
         />
 
         <br />
-        <Heading size="md">Previous Work</Heading>
+        <Heading size="md">Work history</Heading>
         <ResumeEntry
           position="Director of Product Management, Data and Analytics"
           company="HouseCanary"
@@ -94,6 +83,20 @@ export default function About() {
           company="Williams College"
           link="https://www.williams.edu"
         />
+        <br />
+        <br />
+        <NextLink href="/about/manual" passHref>
+          <Link>
+            <Heading size="md">User manual for working with me</Heading>
+          </Link>
+        </NextLink>
+        <br />
+        <NextLink href="/about/how_i_got_into_pm" passHref>
+          <Link>
+            <Heading size="md">How I got into product management</Heading>
+          </Link>
+        </NextLink>
+        <br />
       </Container>
     </Text>
   );
