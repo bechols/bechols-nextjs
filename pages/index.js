@@ -1,22 +1,20 @@
 import Head from "next/head";
 import NextLink from "next/link";
-import Link from "next/link";
 import Image from "next/image";
 import pic from "../public/ben_and_liz_point_lobos.jpeg";
-import { Box, VStack, HStack, Stack, Heading } from "@chakra-ui/react";
-import { SiApachekafka } from 'react-icons/si';
-import { GiBookshelf, GiEarthAmerica } from 'react-icons/gi';
+import { Box, Link, VStack, HStack, Stack, Heading } from "@chakra-ui/react";
+import { SiApachekafka } from "react-icons/si";
+import { GiBookshelf, GiEarthAmerica } from "react-icons/gi";
 
 function CTACard({ heading, link, icon }) {
   return (
     <NextLink href={link} passHref>
-      <Link variant="ghost">
-        <Box p={5} shadow="md" borderWidth="1px" w="100%">
+      <Link variant="ghost"w="100%">
+        <Box p={5} shadow="md" borderWidth="1px">
           <HStack>
-          <Heading fontSize="lg">{heading}</Heading>
-          {icon}
+            <Heading fontSize="lg">{heading}</Heading>
+            {icon}
           </HStack>
-          
         </Box>
       </Link>
     </NextLink>
@@ -46,10 +44,10 @@ export default function Home() {
             link="/about"
             icon={<SiApachekafka />}
           />
-          <CTACard 
-            heading="I read a lot." 
-            link="/books" 
-            icon={<GiBookshelf />} 
+          <CTACard
+            heading="I read a lot."
+            link="/books"
+            icon={<GiBookshelf />}
           />
           <CTACard
             heading="The world is fascinating."
