@@ -6,7 +6,7 @@ import {
   Button,
   Link,
   VStack,
-  Container
+  Container,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
@@ -28,9 +28,9 @@ const Header = () => {
         py={3}
       >
         <NextLink href="/" passHref>
-          <Link>
-            <Heading size="sm">Ben Echols</Heading>
-          </Link>
+          <Button as={Link} size="md" variant="ghost">
+            Ben Echols
+          </Button>
         </NextLink>
         <HStack alignItems="center" spacing={{ base: 0, md: 2 }}>
           <NextLink href="/about" passHref>

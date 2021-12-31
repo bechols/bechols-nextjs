@@ -1,23 +1,40 @@
 import Head from "next/head";
 import NextLink from "next/link";
-import Image from "next/image";
-import pic from "../public/ben_and_liz_point_lobos.jpeg";
-import { Box, Link, VStack, HStack, Stack, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Link,
+  VStack,
+  HStack,
+  Stack,
+  Heading,
+  Img,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { SiApachekafka } from "react-icons/si";
 import { GiBookshelf, GiEarthAmerica } from "react-icons/gi";
 
 function CTACard({ heading, link, icon }) {
+  const bg = useColorModeValue("williamsGold", "williamsPurple");
   return (
-    <NextLink href={link} passHref>
-      <Link variant="ghost"w="100%">
-        <Box p={5} shadow="md" borderWidth="1px">
+    <Container
+      p={5}
+      shadow="md"
+      borderWidth="1px"
+      _hover={{
+        bg: bg,
+      }}
+    >
+      <NextLink href={link} passHref>
+        <Link variant="ghost" w="100%" _hover="none">
           <HStack>
-            <Heading fontSize="lg">{heading}</Heading>
+            <Text fontSize="xl">{heading}</Text>
             {icon}
           </HStack>
-        </Box>
-      </Link>
-    </NextLink>
+        </Link>
+      </NextLink>
+    </Container>
   );
 }
 
@@ -55,8 +72,13 @@ export default function Home() {
             icon={<GiEarthAmerica />}
           />
         </VStack>
-        <Box rounded="20px" overflow="hidden" maxW="md">
-          <Image src={pic} alt="Ben with his favorite person." />
+        <Box maxW="md">
+          <Img
+            src={"/ben_and_liz_point_lobos.jpeg"}
+            alt="Ben with his favorite person."
+            objectFit="cover"
+            borderRadius="20px"
+          />
         </Box>
       </Stack>
     </div>

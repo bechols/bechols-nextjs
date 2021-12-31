@@ -6,34 +6,45 @@ import {
   Image,
   HStack,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 const axios = require(`axios`); // using Axios instead of native fetch or swr or something because Goodreads returns XML
 var parseString = require("xml2js").parseString;
 
 function BookCard({ title, author, link, imagelink, body, rating }) {
+  const bg = useColorModeValue("williamsGold", "williamsPurple");
+
   return (
-    <Container p={5} my={5} shadow="md" borderWidth="1px">
-        <Link href={link} isExternal>
-          <HStack justifyContent="space-between">
-            <Container>
-              <Heading size="md">{title}</Heading>
-              {author}
-              {rating && body && (
-                <Box pt="5">
-                  <HStack>
-                    <Heading size="xs">My review:</Heading>
-                    <Text>{rating + " stars"}</Text>
-                  </HStack>
-                  <Text>{body}</Text>
-                </Box>
-              )}
-            </Container>
-            {!imagelink.includes("nophoto") && (
-              <Image src={imagelink} alt={"Cover of " + title} />
+    <Container
+      p={5}
+      my={5}
+      shadow="md"
+      borderWidth="1px"
+      _hover={{
+        bg: bg,
+      }}
+    >
+      <Link href={link} isExternal _hover={"none"}>
+        <HStack justifyContent="space-between">
+          <Container>
+            <Heading size="md">{title}</Heading>
+            <Text>{author}</Text>
+            {rating && body && (
+              <Box pt="5">
+                <HStack>
+                  <Heading size="xs">My review:</Heading>
+                  <Text>{rating + " stars"}</Text>
+                </HStack>
+                <Text>{body}</Text>
+              </Box>
             )}
-          </HStack>
-        </Link>
+          </Container>
+          {!imagelink.includes("nophoto") && (
+            <Image src={imagelink} alt={"Cover of " + title} />
+          )}
+        </HStack>
+      </Link>
     </Container>
   );
 }
@@ -41,7 +52,8 @@ function BookCard({ title, author, link, imagelink, body, rating }) {
 export default function Books({ currentlyReading, recentlyRead }) {
   return (
     <Container>
-      {currentlyReading && <Heading>Currently Reading</Heading>}
+      <Heading size="lg">Books</Heading>
+      {currentlyReading && <Heading size="md">Currently Reading</Heading>}
       {currentlyReading &&
         currentlyReading.map(({ book }, index) => {
           if (book.title) {
@@ -57,7 +69,7 @@ export default function Books({ currentlyReading, recentlyRead }) {
           }
           return null;
         })}
-      <Heading>Recently Read</Heading>
+      {recentlyRead && <Heading size="md">Recently Read</Heading>}
       {recentlyRead &&
         recentlyRead.map((review, index) => {
           if (review.book.title) {
@@ -97,7 +109,7 @@ export async function getStaticProps() {
   var currentlyReading;
   parseString(currentShelfListXml.data, function (err, result) {
     if (err) {
-      return
+      return;
     } else {
       if (
         Object.keys(result["GoodreadsResponse"]["reviews"][0]["review"] || {})
@@ -165,7 +177,7 @@ export async function getStaticProps() {
 
   parseString(recentShelfListXml.data, function (err, result) {
     if (err) {
-      return
+      return;
     } else {
       if (
         Object.keys(result["GoodreadsResponse"]["reviews"][0]["review"] || {})
