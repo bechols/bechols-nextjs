@@ -8,14 +8,14 @@ const config = {
 
 const purpleRing = (props) => ({
   _focus: {
-    ringColor: mode('purple.300', 'purple.600')(props),
+    ringColor: mode('williamsPurple', 'williamsGold')(props),
     ring: 3,
   },
 });
 
 const inputBorder = (props) => ({
   _focus: {
-    borderColor: mode('purple.300', 'purple.600')(props),
+    borderColor: mode('williamsPurple', 'williamsGold')(props),
   },
 });
 
@@ -72,6 +72,8 @@ const theme = extendTheme({
   },
   colors: {
     twitter: '#1EA1F1',
+    williamsPurple: '#500082',
+    williamsGold: '#FFBE0A'
   },
   fonts: {
     heading: `Cal Sans, ${base.fonts.heading}`,

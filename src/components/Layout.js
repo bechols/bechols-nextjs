@@ -14,6 +14,7 @@ import Head from "next/head";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <>
       <Head>

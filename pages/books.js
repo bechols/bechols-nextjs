@@ -1,31 +1,57 @@
-import { Button, Container, Heading, Link, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Heading,
+  Link,
+  Image,
+  HStack,
+  Text,
+} from "@chakra-ui/react";
 
 const axios = require(`axios`); // using Axios instead of native fetch or swr or something because Goodreads returns XML
 var parseString = require("xml2js").parseString;
 
-function BookButton({ title, author, link }) {
+function BookCard({ title, author, link, imagelink, body, rating }) {
   return (
-    <Button as={Link} href={link} size="sm" variant="ghost" isExternal>
-      {title}
-      {" by "}
-      {author}
-    </Button>
+    <Container p={5} my={5} shadow="md" borderWidth="1px">
+        <Link href={link} isExternal>
+          <HStack justifyContent="space-between">
+            <Container>
+              <Heading size="md">{title}</Heading>
+              {author}
+              {rating && body && (
+                <Box pt="5">
+                  <HStack>
+                    <Heading size="xs">My review:</Heading>
+                    <Text>{rating + " stars"}</Text>
+                  </HStack>
+                  <Text>{body}</Text>
+                </Box>
+              )}
+            </Container>
+            {!imagelink.includes("nophoto") && (
+              <Image src={imagelink} alt={"Cover of " + title} />
+            )}
+          </HStack>
+        </Link>
+    </Container>
   );
 }
 
 export default function Books({ currentlyReading, recentlyRead }) {
   return (
     <Container>
-      <Heading>Currently Reading</Heading>
+      {currentlyReading && <Heading>Currently Reading</Heading>}
       {currentlyReading &&
         currentlyReading.map(({ book }, index) => {
           if (book.title) {
             return (
-              <BookButton
+              <BookCard
                 title={book.title}
                 author={book.author}
                 link={book.link}
                 key={index}
+                imagelink={book.smallImageUrl}
               />
             );
           }
@@ -33,14 +59,17 @@ export default function Books({ currentlyReading, recentlyRead }) {
         })}
       <Heading>Recently Read</Heading>
       {recentlyRead &&
-        recentlyRead.map(({ book }, index) => {
-          if (book.title) {
+        recentlyRead.map((review, index) => {
+          if (review.book.title) {
             return (
-              <BookButton
-                title={book.title}
-                author={book.author}
-                link={book.link}
+              <BookCard
+                title={review.book.title}
+                author={review.book.author}
+                link={review.book.link}
                 key={index}
+                imagelink={review.book.smallImageUrl}
+                rating={review.rating}
+                body={review.body}
               />
             );
           }
@@ -68,7 +97,7 @@ export async function getStaticProps() {
   var currentlyReading;
   parseString(currentShelfListXml.data, function (err, result) {
     if (err) {
-      // TODO handle error
+      return
     } else {
       if (
         Object.keys(result["GoodreadsResponse"]["reviews"][0]["review"] || {})
@@ -136,7 +165,7 @@ export async function getStaticProps() {
 
   parseString(recentShelfListXml.data, function (err, result) {
     if (err) {
-      // TODO handle error
+      return
     } else {
       if (
         Object.keys(result["GoodreadsResponse"]["reviews"][0]["review"] || {})

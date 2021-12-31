@@ -19,7 +19,7 @@ function ResumeEntry({ position, company, link }) {
 
 export default function About({ posts }) {
   return (
-    <Stack alignItems="center">
+    <Stack>
       <Heading size="lg">About Me</Heading>
       <br />
       <Heading size="md">Get in touch</Heading>
