@@ -85,7 +85,7 @@ export default function Layout({ children }) {
       px={{ base: 4, lg: 0 }}
       centerContent
     >
-      <VStack flex={1} spacing={16} alignItems="stretch" w="full">
+      <VStack flex={1} spacing="12px" alignItems="stretch" w="full">
         <Header />
         {children}
       </VStack>

@@ -8,15 +8,15 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import { GrGithub, GrMail, GrLinkedin, GrTwitter } from "react-icons/gr";
 import { getAllMDXInFolder } from "../../src/utils/getAllMDXInFolder";
 
 function ResumeEntry({ position, company, link }) {
-  const bg = useColorModeValue('williamsGold','williamsPurple')
+  const bg = useColorModeValue("williamsGold", "williamsPurple");
   return (
     <Container
       p={5}
-      my={5}
       shadow="md"
       borderWidth="1px"
       _hover={{
@@ -43,10 +43,10 @@ export default function About({ posts }) {
   const bgInvert = useColorModeValue("williamsGold", "williamsPurple");
 
   return (
-    <VStack spacing="16px" align="flex-start">
+    <VStack spacing="12px" align="flex-start">
       <Heading size="lg">About Me</Heading>
-      <Heading size="md">Get in touch</Heading>
       <HStack spacing="16px">
+        <Text>Contact:</Text>
         <Link href="mailto:benjamin.echols@gmail.com" isExternal>
           <GrMail fontSize="32px" />
         </Link>
@@ -62,17 +62,11 @@ export default function About({ posts }) {
       </HStack>
       {posts.map((post, index) => (
         <NextLink href={"/about/" + post.slug} passHref key={index}>
-          <Link pb="5px" _hover="none">
-            <Heading
-              size="md"
-              textDecoration="underline"
-              _hover={{
-                color: bg,
-                bg: bgInvert
-              }}
-            >
+          <Link pb="5px">
+            <Text>
               {post.title}
-            </Heading>
+              <ChevronRightIcon />
+            </Text>
           </Link>
         </NextLink>
       ))}
