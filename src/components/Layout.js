@@ -70,7 +70,7 @@ const Footer = () => {
       py={3}
     >
       <a href="https://github.com/bechols/bechols-nextjs">
-        © Ben Echols 2021. {process.env.gitShaShort}
+        © Ben Echols {new Date().getFullYear()}. {process.env.gitShaShort}
       </a>
     </HStack>
   );
