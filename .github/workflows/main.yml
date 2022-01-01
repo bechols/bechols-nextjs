@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: POST to Vercel build hook endpoint
-      run: curl -X POST -d {} ${{ secrets.VERCEL_BUILD_URL }}
+      run: curl -X POST ${{ secrets.VERCEL_BUILD_URL }}
