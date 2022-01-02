@@ -46,7 +46,7 @@ const theme = extendTheme({
     Link: {
       baseStyle: (props) => ({
         ...purpleRing(props),
-        _hover: {color: mode('williamsPurple','williamsGold')(props),bgColor: mode('williamsGold','williamsPurple')(props)}
+        _hover: {'color': mode('williamsPurple','williamsGold')(props),'bgColor': mode('williamsGold','williamsPurple')(props)}
       })
     },
     Button: {
