@@ -13,7 +13,6 @@ import NextLink from "next/link";
 import Head from "next/head";
 
 const Header = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
@@ -47,14 +46,6 @@ const Header = () => {
             <Button as={NextLink} href="/interesting" size="sm" variant="ghost">
               Interesting
             </Button>
-          
-          <IconButton
-            aria-label="toggle theme"
-            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            variant="ghost"
-            size="sm"
-            onClick={toggleColorMode}
-          />
         </HStack>
       </HStack>
     </>
@@ -62,6 +53,7 @@ const Header = () => {
 };
 
 const Footer = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <HStack
       as="footer"
@@ -72,6 +64,13 @@ const Footer = () => {
       <Link href="https://github.com/bechols/bechols-nextjs">
         © Ben Echols {new Date().getFullYear()}. {process.env.gitShaShort}
       </Link>
+      <IconButton
+            aria-label="toggle theme"
+            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            variant="ghost"
+            size="sm"
+            onClick={toggleColorMode}
+          />
     </HStack>
   );
 };
