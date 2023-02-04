@@ -7,6 +7,8 @@ import {
   Text,
   VStack,
   useColorModeValue,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { GrGithub, GrMail, GrLinkedin, GrTwitter } from "react-icons/gr";
@@ -24,14 +26,16 @@ function ResumeEntry({ position, company, link }) {
       }}
       userSelect="none"
     >
-      <Link href={link} isExternal _hover={{}}>
+      <LinkBox>
+      <LinkOverlay href={link} isExternal _hover={{}}>
         <HStack justifyContent="space-between">
           <Container>
             <Heading size="sm">{position}</Heading>
             <Text>{company}</Text>
           </Container>
         </HStack>
-      </Link>
+      </LinkOverlay>
+      </LinkBox>
     </Container>
   );
 }
@@ -45,21 +49,21 @@ export default function About({ posts }) {
       <Heading size="lg">About Me</Heading>
       <HStack spacing="16px">
         <Text>Contact:</Text>
-        <Link href="mailto:benjamin.echols@gmail.com" isExternal>
+        <Link href="mailto:benjamin.echols@gmail.com" isExternal rounded="md" p="2">
           <GrMail fontSize="32px" />
         </Link>
-        <Link href="https://linkedin.com/in/benechols" isExternal>
+        <Link href="https://linkedin.com/in/benechols" isExternal rounded="md" p="2">
           <GrLinkedin fontSize="32px" />
         </Link>
-        <Link href="https://github.com/bechols" isExternal>
+        <Link href="https://github.com/bechols" isExternal rounded="md" p="2">
           <GrGithub fontSize="32px" />
         </Link>
-        <Link href="https://twitter.com/bechols" isExternal>
+        <Link href="https://twitter.com/bechols" isExternal rounded="md" p="2">
           <GrTwitter fontSize="32px" />
         </Link>
       </HStack>
       {posts.map((post, index) => (
-          <Link  href={"/about/" + post.slug} as={NextLink} pb="5px" key={index}>
+          <Link  href={"/about/" + post.slug} as={NextLink} pb="5px" key={index} rounded="md" p="2">
             <Text>
               {post.title}
               <ChevronRightIcon />

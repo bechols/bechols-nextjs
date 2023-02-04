@@ -2,10 +2,11 @@ import NextLink from "next/link";
 import {
   Container,
   Heading,
-  Link,
+  LinkBox,
   Text,
   VStack,
   useColorModeValue,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import { getAllMDXInFolder } from "../../src/utils/getAllMDXInFolder";
 
@@ -15,7 +16,8 @@ export default function Interesting({ posts }) {
     <Container>
     <Heading size="lg">Interesting</Heading>
       {posts.map((post, index) => (
-          <Link as={NextLink} href={"/interesting/" + post.slug} _hover={{}} key={index}>
+        <LinkBox key={index}>
+          
             <Container
               p={5}
               my={5}
@@ -28,11 +30,14 @@ export default function Interesting({ posts }) {
               w="100%"
             >
               <VStack>
+              <LinkOverlay as={NextLink} href={"/interesting/" + post.slug} _hover={{}} >
                 <Heading fontSize="lg">{post.title}</Heading>
-                <Text>{post.source}</Text>
+                <Text align={"center"}>{post.source}</Text>
+                </LinkOverlay>
               </VStack>
             </Container>
-          </Link>
+          
+          </LinkBox>
       ))}
     </Container>
   );

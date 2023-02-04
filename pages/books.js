@@ -7,6 +7,8 @@ import {
   HStack,
   Text,
   useColorModeValue,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 
 const axios = require(`axios`); // using Axios instead of native fetch or swr or something because Goodreads returns XML
@@ -25,7 +27,8 @@ function BookCard({ title, author, link, imagelink, body, rating }) {
         bg: bg,
       }}
     >
-      <Link href={link} isExternal _hover={{}}>
+      <LinkBox>
+      <LinkOverlay href={link} isExternal _hover={{}}>
         <HStack justifyContent="space-between">
           <Container>
             <Heading size="md">{title}</Heading>
@@ -44,7 +47,8 @@ function BookCard({ title, author, link, imagelink, body, rating }) {
             <Image src={imagelink} alt={"Cover of " + title} />
           )}
         </HStack>
-      </Link>
+      </LinkOverlay>
+      </LinkBox>
     </Container>
   );
 }

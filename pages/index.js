@@ -2,8 +2,8 @@ import Head from "next/head";
 import NextLink from "next/link";
 import {
   Box,
-  Container,
-  Link,
+  LinkBox,
+  LinkOverlay,
   VStack,
   HStack,
   Stack,
@@ -18,7 +18,8 @@ import { GiBookshelf, GiEarthAmerica } from "react-icons/gi";
 function CTACard({ heading, link, icon }) {
   const bg = useColorModeValue("williamsGold", "williamsPurple");
   return (
-    <Container
+    <LinkBox as='container'
+      w="full"
       p={5}
       shadow="md"
       borderWidth="1px"
@@ -27,13 +28,14 @@ function CTACard({ heading, link, icon }) {
       }}
       userSelect="none"
     >
-        <Link as={NextLink} href={link} variant="ghost" w="100%" _hover={{}}>
+
+        <LinkOverlay as={NextLink} href={link} variant="ghost" w="100%" userSelect="none">
           <HStack>
-            <Text fontSize="xl">{heading}</Text>
+            <Text fontSize="xl" userSelect="none">{heading}</Text>
             {icon}
           </HStack>
-        </Link>
-    </Container>
+        </LinkOverlay>
+    </LinkBox>
   );
 }
 
