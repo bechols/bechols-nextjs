@@ -15,8 +15,7 @@ export default function Interesting({ posts }) {
     <Container>
     <Heading size="lg">Interesting</Heading>
       {posts.map((post, index) => (
-        <NextLink href={"/interesting/" + post.slug} passHref>
-          <Link _hover={"none"}>
+          <Link as={NextLink} href={"/interesting/" + post.slug} _hover={{}} key={index}>
             <Container
               p={5}
               my={5}
@@ -34,7 +33,6 @@ export default function Interesting({ posts }) {
               </VStack>
             </Container>
           </Link>
-        </NextLink>
       ))}
     </Container>
   );

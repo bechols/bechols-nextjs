@@ -25,7 +25,7 @@ function BookCard({ title, author, link, imagelink, body, rating }) {
         bg: bg,
       }}
     >
-      <Link href={link} isExternal _hover={"none"}>
+      <Link href={link} isExternal _hover={{}}>
         <HStack justifyContent="space-between">
           <Container>
             <Heading size="md">{title}</Heading>

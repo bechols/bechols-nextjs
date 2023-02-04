@@ -22,16 +22,14 @@ function ResumeEntry({ position, company, link }) {
       _hover={{
         bg: bg,
       }}
+      userSelect="none"
     >
-      <Link href={link} isExternal _hover={"none"}>
+      <Link href={link} isExternal _hover={{}}>
         <HStack justifyContent="space-between">
           <Container>
             <Heading size="sm">{position}</Heading>
             <Text>{company}</Text>
           </Container>
-          {/* {!imagelink.includes("nophoto") && (
-            <Image src={imagelink} alt={"Cover of " + title} />
-          )} */}
         </HStack>
       </Link>
     </Container>
@@ -61,22 +59,25 @@ export default function About({ posts }) {
         </Link>
       </HStack>
       {posts.map((post, index) => (
-        <NextLink href={"/about/" + post.slug} passHref key={index}>
-          <Link pb="5px">
+          <Link  href={"/about/" + post.slug} as={NextLink} pb="5px" key={index}>
             <Text>
               {post.title}
               <ChevronRightIcon />
             </Text>
           </Link>
-        </NextLink>
       ))}
       <Heading size="md">Current work</Heading>
       <ResumeEntry
-        position="Group Product Manager, Confluent Cloud"
+        position="Co-founder and CEO"
+        company="Something new"
+        link="#"
+      />
+      <Heading size="md">Work history</Heading>
+      <ResumeEntry
+        position="Director of Product Management, Confluent Cloud"
         company="Confluent"
         link="https://www.confluent.io"
       />
-      <Heading size="md">Work history</Heading>
       <ResumeEntry
         position="Director of Product Management, Data and Analytics"
         company="HouseCanary"

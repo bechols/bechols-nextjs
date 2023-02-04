@@ -1,8 +1,7 @@
-import { GetStaticProps, GetStaticPaths } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
-import { VStack, Heading, HStack, Text, Link } from "@chakra-ui/react";
+import { VStack, Heading, Link } from "@chakra-ui/react";
 
 import { getAllMDXInFolder } from "../../src/utils/getAllMDXInFolder";
 import { readMDXFile } from "../../src/utils/readMDXFile";

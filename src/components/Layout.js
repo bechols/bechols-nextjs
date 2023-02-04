@@ -27,27 +27,27 @@ const Header = () => {
         alignItems="center"
         py={3}
       >
-        <NextLink href="/" passHref>
-          <Button as={Link} size="md" variant="ghost">
+        
+          <Button as={NextLink} href="/" size="md" variant="ghost">
             Ben Echols
           </Button>
-        </NextLink>
+        
         <HStack alignItems="center" spacing={{ base: 0, md: 2 }}>
-          <NextLink href="/about" passHref>
-            <Button as={Link} size="sm" variant="ghost">
+          
+            <Button as={NextLink} href="/about" size="sm" variant="ghost">
               About Me
             </Button>
-          </NextLink>
-          <NextLink href="/books" passHref>
-            <Button as={Link} size="sm" variant="ghost">
+          
+          
+            <Button as={NextLink} href="/books" size="sm" variant="ghost">
               Books
             </Button>
-          </NextLink>
-          <NextLink href="/interesting" passHref>
-            <Button as={Link} size="sm" variant="ghost">
+          
+          
+            <Button as={NextLink} href="/interesting" size="sm" variant="ghost">
               Interesting
             </Button>
-          </NextLink>
+          
           <IconButton
             aria-label="toggle theme"
             icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
@@ -69,9 +69,9 @@ const Footer = () => {
       alignItems="center"
       py={3}
     >
-      <a href="https://github.com/bechols/bechols-nextjs">
+      <Link href="https://github.com/bechols/bechols-nextjs">
         © Ben Echols {new Date().getFullYear()}. {process.env.gitShaShort}
-      </a>
+      </Link>
     </HStack>
   );
 };

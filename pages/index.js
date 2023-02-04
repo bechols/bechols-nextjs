@@ -12,7 +12,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { SiApachekafka } from "react-icons/si";
+import { RiLightbulbFlashLine } from "react-icons/ri";
 import { GiBookshelf, GiEarthAmerica } from "react-icons/gi";
 
 function CTACard({ heading, link, icon }) {
@@ -25,15 +25,14 @@ function CTACard({ heading, link, icon }) {
       _hover={{
         bg: bg,
       }}
+      userSelect="none"
     >
-      <NextLink href={link} passHref>
-        <Link variant="ghost" w="100%" _hover="none">
+        <Link as={NextLink} href={link} variant="ghost" w="100%" _hover={{}}>
           <HStack>
             <Text fontSize="xl">{heading}</Text>
             {icon}
           </HStack>
         </Link>
-      </NextLink>
     </Container>
   );
 }
@@ -57,9 +56,9 @@ export default function Home() {
             Trying to leave it better than I found it.
           </Heading>
           <CTACard
-            heading="I'm a product manager at Confluent."
+            heading="I'm working on something new."
             link="/about"
-            icon={<SiApachekafka />}
+            icon={<RiLightbulbFlashLine />}
           />
           <CTACard
             heading="I read a lot."
