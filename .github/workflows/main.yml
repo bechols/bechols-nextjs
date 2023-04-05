@@ -2,7 +2,7 @@ name: Trigger Vercel build 4x/weekly
 
 on:
   schedule:
-    - cron: '19 19 */2 * *'
+    - cron: '19 19 */4 * *'
   
   workflow_dispatch:
 
